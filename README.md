@@ -8,10 +8,27 @@ npm i -D ts-check-perf
 
 It runs TS type-checked many times over the same samples to measure type-checking performance.
 
-Optionally, define a preparation code that is loaded by TS only once.
+## Importing modules into samples
 
-Samples can import files of your project, project files are also loaded by TS only once,
-so only the performance of samples is measured.
+As long as you have `"skipLibCheck": true` in tsconfig.json, importing external modules won't take time of measurement.
+
+Such benchmark case will only measure type-checking of `Partial<Type>`:
+
+```ts
+import { Type } from 'external-module'
+
+export type P = Partial<Type>
+```
+
+But, unfortunately, the same does not work for local files, and such benchmark doesn't make sense:
+
+```ts
+import { Type } from './my-code'
+
+export type P = Partial<Type>
+```
+
+It will mostly measure time of type-checking of imported file.
 
 ## Defining samples
 
@@ -35,6 +52,12 @@ const preparation = `
 `;
 ```
 
+Note that `preparation` usefulness is very limited, and most likely you won't need it in your benchmarks.
+It can be used to define types that somehow gets available in samples below,
+but it cannot define variables in a same way, it cannot be imported into samples,
+and when you import external module into `preparation` it also most likely won't work as expected.
+But, it works for this use-case.
+
 Next, we can define our samples, one will extend the type, and the second will extend the interface.
 
 Types in samples must be exported, otherwise TS compiler will throw an error about name collision.
@@ -44,17 +67,17 @@ Sample code can be defined as object where keys are sample names and values are 
 ```ts
 const samples = {
   type: `
-    export type Obj = {
-      one: 1
-      two: 2
-      three: 3
+    export type Extended = Type & {
+      four: 4
+      five: 5
+      six: 6
     }
   `,
   interface: `
-    export interface Obj {
-      one: 1
-      two: 2
-      three: 3
+    export interface Extended extends Interface {
+      four: 4
+      five: 5
+      six: 6
     }
   `,
 };

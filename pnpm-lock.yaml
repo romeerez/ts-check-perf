@@ -1,4 +1,4 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
@@ -10,6 +10,9 @@ dependencies:
     version: 5.0.2
 
 devDependencies:
+  '@types/benchmark':
+    specifier: ^2.1.5
+    version: 2.1.5
   '@types/node':
     specifier: ^20.10.2
     version: 20.10.2
@@ -135,6 +138,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@types/benchmark@2.1.5:
+    resolution: {integrity: sha512-cKio2eFB3v7qmKcvIHLUMw/dIx/8bhWPuzpzRT4unCPRTD8VdA9Zb0afxpcxOqR4PixRS7yT42FqGS8BYL8g1w==}
+    dev: true
 
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
