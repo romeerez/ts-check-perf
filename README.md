@@ -1,9 +1,9 @@
-# ts-bench
+# ts-check-perf
 
 A tool for measuring and comparing type-checking speed of TS samples.
 
 ```shell
-npm i -D ts-bench
+npm i -D ts-check-perf
 ```
 
 It runs TS type-checked many times over the same samples to measure type-checking performance.
@@ -86,7 +86,7 @@ const samples = [
 `measureTime` type checks first sample, second, first, second, and does so 1000 times for each sample.
 
 ```ts
-import { measureTime } from "ts-bench";
+import { measureTime } from "ts-check-perf";
 
 measureTime({
   preparation,
@@ -122,7 +122,7 @@ measureTime({
 measuring how many operations per second each sample gives.
 
 ```ts
-import { measureSpeed } from "ts-bench";
+import { measureSpeed } from "ts-check-perf";
 
 measureSpeed({
   preparation,
@@ -150,10 +150,10 @@ measureSpeed({
 
 ## benchmark.js
 
-You can use `ts-bench` in together with other benchmarking tools which provides more metrics.
+You can use `ts-check-perf` in together with other benchmarking tools which provides more metrics.
 
 ```ts
-import { setupTsBenchmark } from "ts-bench";
+import { setupTsBenchmark } from "ts-check-perf";
 import * as Benchmark from 'benchmark'
 
 const { typeChecker, sourceFiles } = setupTsBenchmark({

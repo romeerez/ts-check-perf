@@ -1,5 +1,5 @@
 {
-  "name": "ts-bench",
+  "name": "ts-check-perf",
   "version": "0.0.0",
   "description": "Measuring and comparing type-checking speed of TS samples",
   "main": "dist/main.js",
