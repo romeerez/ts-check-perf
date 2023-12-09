@@ -1,0 +1,42 @@
+{
+  "name": "ts-bench",
+  "version": "0.0.0",
+  "description": "Measuring and comparing type-checking speed of TS samples",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/main.js",
+      "types": "./dist/main.d.ts"
+    },
+    "./patchTypeScript": {
+      "require": "./dist/patchTypeScript.js",
+      "types": "./dist/patchTypeScript.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "typscript",
+    "type-check",
+    "benchmark",
+    "performance",
+    "speed"
+  ],
+  "author": "Roman Kushyn",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.10.2",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "benchmark": "^2.1.4",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "rimraf": "^5.0.5"
+  },
+  "peerDependencies": {
+    "typescript": "5.x"
+  }
+}
